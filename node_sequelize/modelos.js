@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Instanciando o Sequelize (Conectando com o banco)
-const banco = new Sequelize('sys', 'root', '1234', {
+const banco = new Sequelize('dc', 'root', '1234', {
     host: 'localhost',
     dialect: 'mysql'
 });
