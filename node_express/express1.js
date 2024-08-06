@@ -1,5 +1,6 @@
 const express = require('express')
 const mysql = require('mysql2')
+const PORT = 3000;
 
 var app = express();
 
@@ -12,20 +13,13 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Conectado ao banco de dados.");
 });
 
-app.get('/v1/user/:id', (req, res) => {
-
-    var id = req.params.id; 
-
-    // CONSULTA NO BANCO DE DADOS
-    con.query("SELECT * FROM dc.users WHERE id=" + id, function(err, result, fields) {
-        if (err) throw err;
-        res.send({
-            result
-        });
-    });
+app.get('/', (req, res) => {
+    res.send("Olá, Mundo!");
 });
 
-app.listen(3000)
+app.listen(PORT, () => {
+    console.log('Server rodando na porta: ' + PORT)
+})
